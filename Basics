@@ -1,0 +1,76 @@
+( func arg1 arg2 ..)
+
+(print "Hello world!")
+
+(+ (* 2 3) 1)
+
+(and (true false))
+
+List processing lang
+
+'(1 2 3) - the func not called
+
+(eval '(+ 1 2 3))
+
+'(f arg 2)
+
+(first '(1 2 3)) - 1st el
+
+(rest '(1 2 3)) - !first
+
+(*command_line_args*)
+
+(doc first) - documentation
+
+ KEYWORDS:
+ :a 			(= :a 1) false		(= :a :a) true
+
+ VECTORS:
+  [1 2 3]
+  ([1 2 3] 2)
+  (get [1 2 3] 2)
+
+  HASHMAP:
+  {:key1 "value",
+  :key2 "value2"
+  }
+
+  (:key {map})
+
+  VARS:
+  (def x 3)
+
+  FUNCS:
+  (defn mult[] (+ 2 2)
+  )
+
+  (mult) - call
+
+
+  (defn plus1[x] (+ x 1))
+
+LAMBDAS:
+ ((fn [x y] (* x y 2)) 1 2 ) - instant call during defenition
+
+
+DECLARATION
+( defn func 
+	{: doc }
+	[]
+)
+
+(def varaiable '(list) )
+
+LOOPS n CONDS:
+( if statement true_act false_act )
+
+(loop [i 0]
+	(body)
+	(recur (inc i)) - продолжаем цикл
+)
+
+
+
+
+
+
