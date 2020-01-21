@@ -1,0 +1,304 @@
+Last login: Fri Sep 13 16:50:12 on ttys000
+MacBook-Pro-Ivan:~ bodah$ lein repl
+nREPL server started on port 49282 on host 127.0.0.1 - nrepl://127.0.0.1:49282
+REPL-y 0.4.3, nREPL 0.6.0
+Clojure 1.10.0
+OpenJDK 64-Bit Server VM 12+33
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=> (= '(1 2 3 4 5) (list 1 2 3 4 5))
+true
+user=> (= 1 (first '(1 2 3 4 5)))
+true
+user=>  (= '(2 3 4 5) (rest '(1 2 3 4 5)))
+true
+user=> (= 21 (count '(dracula dooku chocula)))
+false
+user=> (= 3 (count '(dracula dooku chocula)))
+true
+user=> (= 0 (count '()))
+true
+user=> (= 0 (rest '(100)))
+false
+user=> (= nil (rest '(100)))
+false
+user=> (= false (rest '(100)))
+false
+user=> (= '() (rest '(100)))
+true
+user=> (= '(:a :b :c :d :e) (cons :a '(:b :c :d :e))))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> (= '(:a :b :c :d :e) (conj '(:a :b :c :d) :e))
+false
+user=> (= '(:e :a :b :c :d) (conj '(:a :b :c :d) :e))
+true
+user=> (= :a (peek '(:a :b :c :d :e)))
+true
+user=> (= '(:b :c :d :e) (pop '(:a :b :c :d :e)))
+true
+user=> (= __ (try
+  #_=>           (pop '())
+  #_=>           (catch IllegalStateException e
+  #_=> 
+  #_=> .
+  #_=> )
+  #_=> 
+  #_=> 
+  #_=> 
+  #_=> 
+  #_=> 
+
+user=> (= __ (try
+  #_=>           (pop '())
+  #_=>           (catch IllegalStateException e
+  #_=>             "No dice!")))
+
+user=> (= "No dice!" (try
+  #_=>           (pop '())
+  #_=>           (catch IllegalStateException e
+  #_=>             "No dice!")))
+true
+user=> (= '() (try
+  #_=>           (rest '())
+  #_=>           (catch IllegalStateException e
+  #_=>             "No dice!")))
+true
+user=> ////// FOURTH ONE
+Syntax error reading source at (REPL:1:1).
+Invalid token: /////
+
+#object[clojure.core$_SLASH_ 0x5ae82446 "clojure.core$_SLASH_@5ae82446"]
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: FOURTH in this context
+
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: ONE in this context
+
+user=> (= 1 (count [42]))
+true
+user=>   (= [1] (vec '(1)))
+true
+user=> (= [] (vector nil nil))
+false
+user=> (= [0 0] (vector nil nil))
+false
+user=> (= [nil nil] (vector nil nil))
+true
+user=> (= [1 2] (vec '(1 2)))
+true
+user=> (= [111 222 333] (conj [111 222] 333))
+true
+user=> (= :peanut (first [:peanut :butter :and :jelly]))
+true
+user=> (= :jelly (last [:peanut :butter :and :jelly]))
+true
+user=> (= :jelly (nth [:peanut :butter :and :jelly] 3))
+true
+user=>   (= [:peanut :jelly] (subvec [:peanut :butter :and :jelly] 1 3))
+false
+user=>   (= [:butter :jelly] (subvec [:peanut :butter :and :jelly] 1 3))
+false
+user=>   (= [:peanut :and] (subvec [:peanut :butter :and :jelly] 1 3))
+false
+user=>   (= [:butter :and :jelly] (subvec [:peanut :butter :and :jelly] 1 3))
+false
+user=>   (= [:peanut :butter :and] (subvec [:peanut :butter :and :jelly] 1 3))
+false
+user=>   (= [:butter :and] (subvec [:peanut :butter :and :jelly] 1 3))
+true
+user=> (= (list 1 2 3) (vector 1 2 3)))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> // 5th one
+#object[clojure.core$_SLASH_ 0x5ae82446 "clojure.core$_SLASH_@5ae82446"]
+#object[clojure.core$_SLASH_ 0x5ae82446 "clojure.core$_SLASH_@5ae82446"]
+Syntax error reading source at (REPL:1:1).
+Invalid number: 5th
+
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: one in this context
+
+user=>   (= #{3} (set 3))
+Execution error (IllegalArgumentException) at user/eval2077 (REPL:1).
+Don't know how to create ISeq from: java.lang.Long
+
+user=>  (require '[clojure.set :as set])
+nil
+user=>   (= #{3} (set 3))
+Execution error (IllegalArgumentException) at user/eval2081 (REPL:1).
+Don't know how to create ISeq from: java.lang.Long
+
+user=>   (= #{3} (set [3]))
+true
+user=>   (= 3 (count #{1 2 3}))
+true
+user=> (= '(1 2 3 4 5) (set '(1 1 2 2 3 3 4 4 5 5)))
+false
+user=> (= #{1 2 3 4 5} (set '(1 1 2 2 3 3 4 4 5 5)))
+true
+user=> (= #{1 2 3 4 5} (set/union #{1 2 3 4} #{2 3 5}))
+true
+user=> (= #{2 3} (set/intersection #{1 2 3 4} #{2 3 5}))
+true
+user=> (= #{1 4} (set/difference #{1 2 3 4 5} #{2 3 5})))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> (doc hash-map)
+-------------------------
+clojure.core/hash-map
+([] [& keyvals])
+  keyval => key val
+  Returns a new hash map with supplied mappings.  If any keys are
+  equal, they are handled as if by repeated uses of assoc.
+nil
+user=> (= {:a 1 :b 2} (hash-map :a 1 :b 2))
+true
+user=>  (= {:a 1} (hash-map :a 1))
+true
+user=>   (= 2 (count {:a 1 :b 2}))
+true
+user=>   (= 2 (get {:a 1 :b 2} :b))
+true
+user=>  (= 1 ({:a 1 :b 2} :a))
+true
+user=> (= 1 (:a {:a 1 :b 2}))
+true
+user=> (= 2014 ({2010 "Vancouver" 2014 "Sochi" 2018 "PyeongChang"} 2014))
+false
+user=> (= Sochi ({2010 "Vancouver" 2014 "Sochi" 2018 "PyeongChang"} 2014))
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: Sochi in this context
+
+user=> (= "Sochi" ({2010 "Vancouver" 2014 "Sochi" 2018 "PyeongChang"} 2014))
+true
+user=> (= nil (get {:a 1 :b 2} :c))
+true
+user=> (= :key_not_found (get {:a 1 :b 2} :c :key-not-found))
+false
+user=> (= nil (get {:a 1 :b 2} :c :key-not-found))
+false
+user=> (= nil (get {:a 1 :b 2} :c :key-not-found))
+false
+user=> (doc get)
+-------------------------
+clojure.core/get
+([map key] [map key not-found])
+  Returns the value mapped to key, not-found or nil if key not present.
+nil
+user=> (= not-found (get {:a 1 :b 2} :c :key-not-found))
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: not-found in this context
+
+user=> (= nil (get {:a 1 :b 2} :c :key-not-found))
+false
+user=> (get {:a 1 :b 2} :c :key-not-found)
+:key-not-found
+user=> (= :key-not-found (get {:a 1 :b 2} :c :key-not-found))
+true
+user=> (= true (contains? {:a nil :b nil} :b))
+true
+user=>   (= false  (contains? {:a nil :b nil} :c))
+true
+user=>  (= {1 "January" 2 "February"} (assoc {1 "January"} 2 "February"))
+true
+user=>   (= {1 "January"} (dissoc {1 "January" 2 "February"} 2))
+true
+user=>   (= {:a 1 :b 2 :c 3 } (merge {:a 1 :b 2} {:c 3}))
+true
+user=> (= {:a 1 :b 1 :c 3} (merge-with + {:a 1 :b 1} {:b 1 :c 3}))
+false
+user=> (doc merge-with)
+-------------------------
+clojure.core/merge-with
+([f & maps])
+  Returns a map that consists of the rest of the maps conj-ed onto
+  the first.  If a key occurs in more than one map, the mapping(s)
+  from the latter (left-to-right) will be combined with the mapping in
+  the result by calling (f val-in-result val-in-latter).
+nil
+user=> (= {:a 1 :b 2 :c 3} (merge-with + {:a 1 :b 1} {:b 1 :c 3}))
+true
+user=> (= (list ) (sort (keys { 2014 "Sochi" 2018 "PyeongChang" 2010 "Vancouver"})))
+false
+user=> (= (list 2010 2014 2018)
+  #_=>      (sort (keys { 2014 "Sochi" 2018 "PyeongChang" 2010 "Vancouver"})))
+true
+user=> (= (list "PyeongChang", "Sochi", "Vancouver")
+  #_=>      (sort (vals {2010 "Vancouver" 2014 "Sochi" 2018 "PyeongChang"})))
+true
+user=> (= {:a 1 :b 2}
+  #_=>      (into {}
+  #_=>            (map
+  #_=>             (fn [[k v]] [k (inc v)])
+  #_=>             {:a 1 :b 2}))))
+false
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> (into {}
+  #_=>            (map
+  #_=>             (fn [[k v]] [k (inc v)])
+  #_=>             {:a 1 :b 2}))))
+{:a 2, :b 3}
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> (= {:a 1 :b 2}
+  #_=>      (into {}
+  #_=>            (map
+  #_=>             (fn [[k v]] [k (inc v)])
+  #_=>             {:a 1 :b 2}))))
+false
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> (= {:a 2 :b 3}
+  #_=>      (into {}
+  #_=>            (map
+  #_=>             (fn [[k v]] [k (inc v)])
+  #_=>             {:a 1 :b 2}))))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> // 7th one
+#object[clojure.core$_SLASH_ 0x5ae82446 "clojure.core$_SLASH_@5ae82446"]
+#object[clojure.core$_SLASH_ 0x5ae82446 "clojure.core$_SLASH_@5ae82446"]
+Syntax error reading source at (REPL:1:1).
+Invalid number: 7th
+
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: one in this context
+
+user=> (defn multiply-by-ten [n]
+  #_=>   (* 10 n))
+#'user/multiply-by-ten
+user=> (defn square [n] (* n n))
+#'user/square
+user=> (= 81 (square 9))
+true
+user=>   (= 20 (multiply-by-ten 2))
+true
+user=>  (= 10 ((fn [n] (* 5 n)) 2))
+true
+user=> (= 60 (#(* 15 %) 4))
+true
+user=>   (= 15 (#(+ %1 %2 %3) 4 5 6))
+true
+user=>  (= "bbCC" (#(str "AA" %2) "bb" "CC"))
+false
+user=>   (= "AACC" (#(str "AA" %2) "bb" "CC"))
+true
+user=> 

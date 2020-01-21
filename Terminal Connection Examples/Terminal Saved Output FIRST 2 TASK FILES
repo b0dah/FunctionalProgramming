@@ -1,0 +1,200 @@
+Last login: Fri Sep 13 09:50:28 on ttys001
+MacBook-Pro-Ivan:~ bodah$ clojure
+Clojure 1.10.1
+user=> ^CMacBook-Pro-Ivan:~ bodah$ lein repl
+Retrieving nrepl/nrepl/0.6.0/nrepl-0.6.0.pom from clojars
+Retrieving clojure-complete/clojure-complete/0.2.5/clojure-complete-0.2.5.pom from clojars
+Retrieving nrepl/nrepl/0.6.0/nrepl-0.6.0.jar from clojars
+Retrieving clojure-complete/clojure-complete/0.2.5/clojure-complete-0.2.5.jar from clojars
+nREPL server started on port 57277 on host 127.0.0.1 - nrepl://127.0.0.1:57277
+REPL-y 0.4.3, nREPL 0.6.0
+Clojure 1.10.0
+OpenJDK 64-Bit Server VM 12+33
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=>   (= __ (+ 1 1))
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: __ in this context
+
+user=>   (= 2 (+ 1 1))
+true
+user=>   (= true true)
+true
+user=>   (= (+ 3 4) 7 (+ 2 5))
+true
+user=> (= true (= 2 2/1))
+true
+user=> (= true (= 2 2.0))
+false
+user=> (= false (= 2 2.0))
+true
+user=> (= true (== 2.0 2))
+true
+user=>   (= true (not (= 1 nil)))
+true
+user=>  (= false (= "hello" :hello 'hello))
+true
+user=> 
+
+user=>   (= :hello (keyword "hello"))
+true
+user=> "Symbolism is all around us"
+"Symbolism is all around us"
+user=>   (= 'hello (symbol   (= "hello"))
+  #_=> )
+Execution error (IllegalArgumentException) at user/eval2026 (REPL:1).
+no conversion to symbol
+
+user=>   (= 'hello (symbol "hello"))
+true
+user=> (= nil nil)
+true
+user=>  (not= :fill-in-the-blank 0))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=>  (not= :fill-in-the-blank true))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=>  (not= :fill-in-the-blank true)
+true
+user=> // 2nd one
+#object[clojure.core$_SLASH_ 0xf29fe11 "clojure.core$_SLASH_@f29fe11"]
+#object[clojure.core$_SLASH_ 0xf29fe11 "clojure.core$_SLASH_@f29fe11"]
+Syntax error reading source at (REPL:1:1).
+Invalid number: 2nd
+
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: one in this context
+
+user=> (= "hello" "hello")
+true
+user=> (= "world" (str 'world))
+true
+user=> (= "Cool right?" (str 'Cool right))
+Syntax error compiling at (REPL:1:18).
+Unable to resolve symbol: right in this context
+
+user=> (= "Cool right?" (str 'Cool right?))
+Syntax error compiling at (REPL:1:18).
+Unable to resolve symbol: right? in this context
+
+user=> (= "Cool right?" (str 'Cool 'right?))
+false
+user=> (= "Cool right?" (str 'Cool str 'right?))
+false
+user=> doc str
+Syntax error compiling at (REPL:0:0).
+Can't take value of a macro: #'clojure.repl/doc
+
+#object[clojure.core$str 0x3ed94e76 "clojure.core$str@3ed94e76"]
+user=> (doc str)
+-------------------------
+clojure.core/str
+([] [x] [x & ys])
+  With no args, returns the empty string. With one arg x, returns
+  x.toString().  (str nil) returns the empty string. With more than
+  one arg, returns the concatenation of the str values of the args.
+nil
+user=> (= "Cool right?" (str 'Cool, ' , 'right?))
+false
+user=> (= "Cool right?" (str 'Cool, ' right?))
+false
+user=> (= "Cool right?" (str "Cool", " " "right?"))
+true
+user=> (= \C (get "Characters" 0))
+true
+user=> (= 11 (count "Hello World"))
+true
+user=> (= false (= \c "c"))
+true
+user=> (doc subs)
+-------------------------
+clojure.core/subs
+([s start] [s start end])
+  Returns the substring of s beginning at start inclusive, and ending
+  at end (defaults to length of string), exclusive.
+nil
+user=> (= "World" (subs "Hello World" 6 10))
+false
+user=> (= "World" (subs "Hello World" 7 11))
+false
+user=> (= "World" (subs "Hello World" "W" "d"))
+Execution error (ClassCastException) at user/eval2068 (REPL:1).
+class java.lang.String cannot be cast to class java.lang.Number (java.lang.String and java.lang.Number are in module java.base of loader 'bootstrap')
+
+user=> (= "World" (subs "Hello World" 6 11))
+true
+user=> (requre '[Clojure.String : as string])
+Syntax error reading source at (REPL:1:27).
+Invalid token: :
+
+user=> (requre '[clojure.string : as string])
+Syntax error reading source at (REPL:1:27).
+Invalid token: :
+
+user=> (requre '[clojure.string :as string])
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: requre in this context
+
+user=> (require '[clojure.string :as string])
+nil
+user=> (doc string/join)
+-------------------------
+clojure.string/join
+([coll] [separator coll])
+  Returns a string of all elements in coll, as returned by (seq coll),
+   separated by an optional separator.
+nil
+user=> (= "123" (string/join '(1 2 3)))
+true
+user=>  (= "1, 2, 3" (string/join ", "  '(1 2 3)))
+true
+user=> (= ["1" "2" "3"] (string/split-lines "1\n2\n3"))
+true
+user=> (= "olleh" (string/reverse "hello"))
+true
+user=> (= 0 (string/index-of "hello world" "h"))
+true
+user=>   (= 13  (string/last-index-of "hello world, hello" "hello"))
+true
+user=>   (= nil (string/index-of "hello world" "bob"))
+true
+user=>  (= "hello world" (string/trim "  \nhello world \t \n"))
+true
+user=>   (= c (char? \c))
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: c in this context
+
+user=>   (= 'c (char? \c))
+false
+user=>   (= "c" (char? \c))
+false
+user=>   (= true (char? \c))
+true
+user=> (= false  (char? "a"))
+true
+user=>  (= false (string? \b))
+true
+user=>   (= true (string? "vanya"))
+true
+user=>   (= true (string/blank? ""))
+true
+user=>   (= false (string/blank? " \n \t  "))
+false
+user=>   (= true (string/blank? " \n \t  "))
+true
+user=>   (= false (string/blank? "hello?\nare you out there?")))
+true
+Syntax error reading source at (REPL:1:2).
+Unmatched delimiter: )
+
+user=> 

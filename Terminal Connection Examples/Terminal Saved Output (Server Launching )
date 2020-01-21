@@ -1,0 +1,63 @@
+Last login: Thu Oct 17 11:40:55 on console
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Pro-Ivan:~ bodah$ cd dev/fp
+MacBook-Pro-Ivan:fp bodah$ cd mire
+MacBook-Pro-Ivan:mire bodah$ git branch --all
+* (HEAD detached at origin/03-state-movement)
+  master
+  remotes/origin/01-echo-server
+  remotes/origin/02-commands
+  remotes/origin/03-state-movement
+  remotes/origin/04-multiplayer
+  remotes/origin/05-seeing
+  remotes/origin/06-rooms
+  remotes/origin/07-items
+  remotes/origin/08-detecting
+  remotes/origin/09-problems
+  remotes/origin/10-testing
+  remotes/origin/11-idioms
+  remotes/origin/12-packaging
+  remotes/origin/14-one-year-retrospective
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+MacBook-Pro-Ivan:mire bodah$ git checkout  remotes/origin/02-commands
+Previous HEAD position was 5a206a4 Unsafe setting of *current-room*.
+HEAD is now at 40e592b Step 2: commands
+MacBook-Pro-Ivan:mire bodah$ git checkout   remotes/origin/03-state-movement
+Previous HEAD position was 40e592b Step 2: commands
+HEAD is now at 5a206a4 Unsafe setting of *current-room*.
+MacBook-Pro-Ivan:mire bodah$ cd ..
+MacBook-Pro-Ivan:fp bodah$ cd mire
+MacBook-Pro-Ivan:mire bodah$ /. mire.sh
+-bash: /.: is a directory
+MacBook-Pro-Ivan:mire bodah$ /.mire.sh
+-bash: /.mire.sh: No such file or directory
+MacBook-Pro-Ivan:mire bodah$ ./mire.sh
+^CMacBook-Pro-Ivan:mire bodah$ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

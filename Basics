@@ -70,6 +70,58 @@ LOOPS n CONDS:
 )
 
 
+///////////////////////////////////////////////////
+(nil? 1) -- сравнение
+
+Pmap - параллельный map
+
+=== Future ========
+
+(def my_future(future (f-prime2)))
+println(future crated) // started computions
+ .
+ .
+ .
+(println @my_future) // called
+(Shutdown agents) // close all flows
+
+== S Transactional Memory
+
+var - синхронные изменения для локальной копии в потоке
+  Создание: (def name value)
+  Изменение: (def n v) - перезапись корневого значения
+              (set! name value) - перезапись локальной копии
+              (alter_var_root (varname) fn value) - перезапись локальной копии
+
+
+ref (refrence to var) - синхронные координированные STM - изменения одной или боле переменных (так раболтают транзакции)
+    Создание: (ref value)
+    Изменение: (ref-set ref value) - внутри блока dosync
+                (alter ref  fn args) - внутри dosync - в сл изменения транзакция перезапустится
+                (commute ref fn args) - продолжит работать со старыми значениями в случае измения
+    Разыменование(доступ на чтение): @ref
+
+atom - синхронные изменения одного значения(транзакции не используются)
+      Создание: (atom value)
+      Изменение: (reset! atom value)
+                (compare-and-set! atom value new value) - сравнивает и заменяет
+                (swap atom fn args) - вычисляет функцию и заменяет
+
+
+agent (functions, which works параллельно в потоке) - асинхронное изменение одного значения 
+    Создание: (agent value)
+    Изменение: (send agent fn args) - функция с этими аргументами и значнием агента будет вычислена в отдлельном потомке, а значение ьбудет заменено в отдельном потоке, фиксированное количество потоков.
+    (send-off agent fn arg) - динамическое добавление потоков.
+
+
+
+
+
+
+
+
+
+
 
 
 

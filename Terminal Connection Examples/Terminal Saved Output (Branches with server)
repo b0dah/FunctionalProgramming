@@ -1,0 +1,286 @@
+Last login: Fri Oct  4 11:08:33 on ttys000
+MacBook-Pro-Ivan:~ bodah$ cd dev/fp/mire
+MacBook-Pro-Ivan:mire bodah$ git branch --all
+* master
+  remotes/origin/01-echo-server
+  remotes/origin/02-commands
+  remotes/origin/03-state-movement
+  remotes/origin/04-multiplayer
+  remotes/origin/05-seeing
+  remotes/origin/06-rooms
+  remotes/origin/07-items
+  remotes/origin/08-detecting
+  remotes/origin/09-problems
+  remotes/origin/10-testing
+  remotes/origin/11-idioms
+  remotes/origin/12-packaging
+  remotes/origin/14-one-year-retrospective
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+MacBook-Pro-Ivan:mire bodah$ git checkout remotes/origin/01-echo-server
+Note: checking out 'remotes/origin/01-echo-server'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at df141a4 Cleaning up mire.clj to use duck-streams.
+MacBook-Pro-Ivan:mire bodah$ mire.sh
+-bash: mire.sh: command not found
+MacBook-Pro-Ivan:mire bodah$ clojure
+Clojure 1.10.1
+user=> java -jar jars/clojure.jar
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: java in this context
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: -jar in this context
+Syntax error compiling at (REPL:0:0).
+No such namespace: jars
+user=> quit
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: quit in this context
+user=> ^CMacBook-Pro-Ivan:mire bodah$ java
+Usage: java [options] <mainclass> [args...]
+           (to execute a class)
+   or  java [options] -jar <jarfile> [args...]
+           (to execute a jar file)
+   or  java [options] -m <module>[/<mainclass>] [args...]
+       java [options] --module <module>[/<mainclass>] [args...]
+           (to execute the main class in a module)
+   or  java [options] <sourcefile> [args]
+           (to execute a single source-file program)
+
+ Arguments following the main class, source file, -jar <jarfile>,
+ -m or --module <module>/<mainclass> are passed as the arguments to
+ main class.
+
+ where options include:
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+    --class-path <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -p <module path>
+    --module-path <module path>...
+                  A : separated list of directories, each directory
+                  is a directory of modules.
+    --upgrade-module-path <module path>...
+                  A : separated list of directories, each directory
+                  is a directory of modules that replace upgradeable
+                  modules in the runtime image
+    --add-modules <module name>[,<module name>...]
+                  root modules to resolve in addition to the initial module.
+                  <module name> can also be ALL-DEFAULT, ALL-SYSTEM,
+                  ALL-MODULE-PATH.
+    --list-modules
+                  list observable modules and exit
+    -d <module name>
+    --describe-module <module name>
+                  describe a module and exit
+    --dry-run     create VM and load main class but do not execute main method.
+                  The --dry-run option may be useful for validating the
+                  command-line options such as the module system configuration.
+    --validate-modules
+                  validate all modules and exit
+                  The --validate-modules option may be useful for finding
+                  conflicts and other errors with modules on the module path.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|module|gc|jni]
+                  enable verbose output
+    -version      print product version to the error stream and exit
+    --version     print product version to the output stream and exit
+    -showversion  print product version to the error stream and continue
+    --show-version
+                  print product version to the output stream and continue
+    --show-module-resolution
+                  show module resolution output during startup
+    -? -h -help
+                  print this help message to the error stream
+    --help        print this help message to the output stream
+    -X            print help on extra options to the error stream
+    --help-extra  print help on extra options to the output stream
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:jdwp
+                  see also -agentlib:jdwp=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+                  HiDPI scaled images are automatically supported and used
+                  if available. The unscaled image filename, e.g. image.ext,
+                  should always be passed as the argument to the -splash option.
+                  The most appropriate scaled image provided will be picked up
+                  automatically.
+                  See the SplashScreen API documentation for more information
+    @argument files
+                  one or more argument files containing options
+    -disable-@files
+                  prevent further argument file expansion
+    --enable-preview
+                  allow classes to depend on preview features of this release
+To specify an argument for a long option, you can use --<name>=<value> or
+--<name> <value>.
+
+MacBook-Pro-Ivan:mire bodah$ java  --version
+openjdk 11.0.2 2019-01-15
+OpenJDK Runtime Environment 18.9 (build 11.0.2+9)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
+MacBook-Pro-Ivan:mire bodah$ ls
+README.markdown	jars		mire.el		mire.sh		src
+MacBook-Pro-Ivan:mire bodah$ cat mire.sh
+#!/bin/sh
+
+java -cp jars/clojure.jar:jars/clojure-contrib.jar clojure.main src/mire.cljMacBook-Pro-Ivan:mire bodah$ java -jar jars/clojure.clj
+Error: Unable to access jarfile jars/clojure.clj
+MacBook-Pro-Ivan:mire bodah$ java -jar jars/clojure.jar
+Clojure
+user=> ^CMacBook-Pro-Ivan:mire bodah$ cat mire.sh
+#!/bin/sh
+
+java -cp jars/clojure.jar:jarjava -cp jars/clojure.jar:jars/clojure-contrib.jar clojure.main src/mire.clj
+^CMacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+git checkout remotes/origin/02-commands
+^CMacBook-Pro-Ivan:mire bodah$ ls
+README.markdown	jars		mire.el		mire.sh		src
+MacBook-Pro-Ivan:mire bodah$  cd ..
+MacBook-Pro-Ivan:fp bodah$ cd mire
+MacBook-Pro-Ivan:mire bodah$ git branch --all
+* (HEAD detached at origin/01-echo-server)
+  master
+  remotes/origin/01-echo-server
+  remotes/origin/02-commands
+  remotes/origin/03-state-movement
+  remotes/origin/04-multiplayer
+  remotes/origin/05-seeing
+  remotes/origin/06-rooms
+  remotes/origin/07-items
+  remotes/origin/08-detecting
+  remotes/origin/09-problems
+  remotes/origin/10-testing
+  remotes/origin/11-idioms
+  remotes/origin/12-packaging
+  remotes/origin/14-one-year-retrospective
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+MacBook-Pro-Ivan:mire bodah$ git chechout   remotes/origin/02-commands
+git: 'chechout' is not a git command. See 'git --help'.
+
+The most similar command is
+	checkout
+MacBook-Pro-Ivan:mire bodah$ git checkout   remotes/origin/02-commands
+Previous HEAD position was df141a4 Cleaning up mire.clj to use duck-streams.
+HEAD is now at 40e592b Step 2: commands
+MacBook-Pro-Ivan:mire bodah$ /. mire.clj
+-bash: /.: is a directory
+MacBook-Pro-Ivan:mire bodah$ ./  mire.clj
+-bash: ./: is a directory
+MacBook-Pro-Ivan:mire bodah$ cd src
+MacBook-Pro-Ivan:src bodah$ ./  mire.clj
+-bash: ./: is a directory
+MacBook-Pro-Ivan:src bodah$ ./mire.clj
+-bash: ./mire.clj: Permission denied
+MacBook-Pro-Ivan:src bodah$ cd ..
+MacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+^CMacBook-Pro-Ivan:mire bodah$ git checkout  remotes/origin/03-state-movement
+Previous HEAD position was 40e592b Step 2: commands
+HEAD is now at 5a206a4 Unsafe setting of *current-room*.
+MacBook-Pro-Ivan:mire bodah$ git checkout   remotes/origin/02-commands
+Previous HEAD position was 5a206a4 Unsafe setting of *current-room*.
+HEAD is now at 40e592b Step 2: commands
+MacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+Exception in thread "Thread-1" java.lang.RuntimeException: java.lang.ClassCastException: class java.lang.String cannot be cast to class clojure.lang.IFn (java.lang.String is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+	at clojure.lang.AFn.run(AFn.java:42)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.ClassCastException: class java.lang.String cannot be cast to class clojure.lang.IFn (java.lang.String is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+	at mire.commands$fn__47.invoke(commands.clj:9)
+	at clojure.lang.AFn.applyToHelper(AFn.java:174)
+	at clojure.lang.AFn.applyTo(AFn.java:165)
+	at clojure.core$apply__3025.doInvoke(core.clj:379)
+	at clojure.lang.RestFn.invoke(RestFn.java:428)
+	at mire.commands$execute__50.invoke(commands.clj:18)
+	at mire$mire_handle_client__182.invoke(mire.clj:15)
+	at clojure.contrib.server_socket$accept_fn__64$fn__66$fn__71.invoke(server_socket.clj:34)
+	at clojure.contrib.server_socket$accept_fn__64$fn__66.invoke(server_socket.clj:33)
+	at clojure.lang.AFn.run(AFn.java:38)
+	... 1 more
+^CMacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+Exception in thread "Thread-1" java.lang.RuntimeException: java.lang.NullPointerException
+	at clojure.lang.AFn.run(AFn.java:42)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NullPointerException
+	at clojure.core$apply__3025.doInvoke(core.clj:379)
+	at clojure.lang.RestFn.invoke(RestFn.java:428)
+	at mire.commands$execute__50.invoke(commands.clj:18)
+	at mire$mire_handle_client__182.invoke(mire.clj:15)
+	at clojure.contrib.server_socket$accept_fn__64$fn__66$fn__71.invoke(server_socket.clj:34)
+	at clojure.contrib.server_socket$accept_fn__64$fn__66.invoke(server_socket.clj:33)
+	at clojure.lang.AFn.run(AFn.java:38)
+	... 1 more
+^CMacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+Exception in thread "Thread-1" java.lang.RuntimeException: java.lang.NullPointerException
+	at clojure.lang.AFn.run(AFn.java:42)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.NullPointerException
+	at clojure.core$apply__3025.doInvoke(core.clj:379)
+	at clojure.lang.RestFn.invoke(RestFn.java:428)
+	at mire.commands$execute__53.invoke(commands.clj:19)
+	at mire$mire_handle_client__185.invoke(mire.clj:15)
+	at clojure.contrib.server_socket$accept_fn__67$fn__69$fn__74.invoke(server_socket.clj:34)
+	at clojure.contrib.server_socket$accept_fn__67$fn__69.invoke(server_socket.clj:33)
+	at clojure.lang.AFn.run(AFn.java:38)
+	... 1 more
+^CMacBook-Pro-Ivan:mire bodah$ ./mire.sh 
+^CMacBook-Pro-Ivan:mire bodah$ git checkout  remotes/origin/03-state-movement
+error: Your local changes to the following files would be overwritten by checkout:
+	src/mire/commands.clj
+Please commit your changes or stash them before you switch branches.
+Aborting
+MacBook-Pro-Ivan:mire bodah$ a
+-bash: a: command not found
+MacBook-Pro-Ivan:mire bodah$ git commit -m "added new commands"
+HEAD detached at origin/02-commands
+Changes not staged for commit:
+	modified:   src/mire/commands.clj
+
+Untracked files:
+	.DS_Store
+	src/.DS_Store
+
+no changes added to commit
+MacBook-Pro-Ivan:mire bodah$ git add *
+MacBook-Pro-Ivan:mire bodah$ git commit -m "added new commands"
+[detached HEAD d91cbe5] added new commands
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+ create mode 100644 src/.DS_Store
+MacBook-Pro-Ivan:mire bodah$ git checkout  remotes/origin/03-state-movement
+Warning: you are leaving 1 commit behind, not connected to
+any of your branches:
+
+  d91cbe5 added new commands
+
+If you want to keep it by creating a new branch, this may be a good time
+to do so with:
+
+ git branch <new-branch-name> d91cbe5
+
+HEAD is now at 5a206a4 Unsafe setting of *current-room*.
+MacBook-Pro-Ivan:mire bodah$ 
